@@ -311,7 +311,7 @@ def main():
         # train_acc_list.append(train_acc)
         np.append(train_acc_list, train_acc.to('cpu'))
         # train_loss_list.append(train_loss)
-        np.append(train_loss_list, train_list.to('cpu'))
+        np.append(train_loss_list, train_loss.to('cpu'))
         time2 = time.time()
         print('epoch {}, total time {:.2f}'.format(epoch, time2 - time1))
 
