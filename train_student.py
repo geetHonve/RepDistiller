@@ -295,6 +295,11 @@ def main():
     test_acc_list = []
     train_loss_list = []
     train_acc_list = []
+
+    test_loss_list = np.array(test_loss_list.cpu())
+    train_loss_list = np.array(train_loss_list)
+    train_acc_list = np.array(train_acc_list).cpu()
+    test_acc_list = np.array(test_acc_list).cpu()
     # routine
     for epoch in range(1, opt.epochs + 1):
 
