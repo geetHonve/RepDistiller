@@ -15,7 +15,7 @@ import torch
 import torch.optim as optim
 import torch.nn as nn
 import torch.backends.cudnn as cudnn
-
+import numpy as np
 
 from models import model_dict
 from models.util import Embed, ConvReg, LinearEmbed
