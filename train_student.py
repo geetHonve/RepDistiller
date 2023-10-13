@@ -173,14 +173,16 @@ def main():
     data = torch.randn(2, 3, 32, 32).to(device)
     model_t.eval()
     model_s.eval()
-    feat_t, _ = model_t(data, is_feat=True)
-    feat_s, _ = model_s(data, is_feat=True)
+    feat_t, _ = model_t(data, is_feat=True).to(device)
+    feat_s, _ = model_s(data, is_feat=True).to(device)
 
     module_list = nn.ModuleList([])
     module_list.append(model_s)
     trainable_list = nn.ModuleList([])
     trainable_list.append(model_s)
     
+    model_list.to(device)
+    trainable_list.to(device)
 
     criterion_cls = nn.CrossEntropyLoss()
     criterion_div = DistillKL(opt.kd_T)
@@ -354,13 +356,13 @@ def main():
     save_file = os.path.join(opt.save_folder, '{}_last.pth'.format(opt.model_s))
     torch.save(state, save_file)
 
-    # fig = plt.figure(figsize=(20,10))
-    # plt.title("learning curve")
-    # plt.plot(train_acc_list, label='train')
-    # plt.plot(test_acc_list, label='test')
-    # plt.xlabel('num_epochs', fontsize=12)
-    # plt.ylabel('accuracy', fontsize=12)
-    # plt.legend(loc='best')
+    fig = plt.figure(figsize=(20,10))
+    plt.title("learning curve")
+    plt.plot(train_acc_list, label='train')
+    plt.plot(test_acc_list, label='test')
+    plt.xlabel('num_epochs', fontsize=12)
+    plt.ylabel('accuracy', fontsize=12)
+    plt.legend(loc='best')
 
 
 if __name__ == '__main__':
