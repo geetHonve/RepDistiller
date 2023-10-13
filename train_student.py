@@ -181,8 +181,6 @@ def main():
     trainable_list = nn.ModuleList([])
     trainable_list.append(model_s)
     
-    model_list
-    trainable_list
 
     criterion_cls = nn.CrossEntropyLoss()
     criterion_div = DistillKL(opt.kd_T)
