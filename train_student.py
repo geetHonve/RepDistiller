@@ -296,10 +296,10 @@ def main():
     train_loss_list = []
     train_acc_list = []
 
-    test_loss_list = np.array(test_loss_list.cpu())
+    test_loss_list = np.array(test_loss_list)
     train_loss_list = np.array(train_loss_list)
-    train_acc_list = np.array(train_acc_list).cpu()
-    test_acc_list = np.array(test_acc_list).cpu()
+    train_acc_list = np.array(train_acc_list)
+    test_acc_list = np.array(test_acc_list)
     # routine
     for epoch in range(1, opt.epochs + 1):
 
@@ -367,7 +367,6 @@ def main():
     plt.ylabel('accuracy', fontsize=12)
     plt.legend(loc='best')
     plt.show()
-
 
 if __name__ == '__main__':
     main()
