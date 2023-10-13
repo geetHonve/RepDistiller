@@ -173,16 +173,16 @@ def main():
     data = torch.randn(2, 3, 32, 32).to(device)
     model_t.eval()
     model_s.eval()
-    feat_t, _ = model_t(data, is_feat=True).to(device)
-    feat_s, _ = model_s(data, is_feat=True).to(device)
+    feat_t, _ = model_t(data, is_feat=True)
+    feat_s, _ = model_s(data, is_feat=True)
 
     module_list = nn.ModuleList([])
     module_list.append(model_s)
     trainable_list = nn.ModuleList([])
     trainable_list.append(model_s)
     
-    model_list.to(device)
-    trainable_list.to(device)
+    model_list
+    trainable_list
 
     criterion_cls = nn.CrossEntropyLoss()
     criterion_div = DistillKL(opt.kd_T)
