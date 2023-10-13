@@ -308,8 +308,10 @@ def main():
 
         time1 = time.time()
         train_acc, train_loss = train(epoch, train_loader, module_list, criterion_list, optimizer, opt)
-        train_acc_list.append(train_acc)
-        train_loss_list.append(train_loss)
+        # train_acc_list.append(train_acc)
+        np.append(train_acc_list, train_acc)
+        # train_loss_list.append(train_loss)
+        np.append(train_loss_list, train_list)
         time2 = time.time()
         print('epoch {}, total time {:.2f}'.format(epoch, time2 - time1))
 
@@ -317,8 +319,10 @@ def main():
         logger.log_value('train_loss', train_loss, epoch)
 
         test_acc, tect_acc_top5, test_loss = validate(val_loader, model_s, criterion_cls, opt)
-        test_acc_list.append(test_acc)
-        test_loss_list.append(test_loss)
+        # test_acc_list.append(test_acc)
+        np.append(test_acc_list, test_acc)
+        # test_loss_list.append(test_loss)
+        np.append(test_loss_list, test_loss)
 
         logger.log_value('test_acc', test_acc, epoch)
         logger.log_value('test_loss', test_loss, epoch)
